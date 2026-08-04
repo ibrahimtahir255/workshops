@@ -18,5 +18,8 @@ output "s3_website_endpoint" {
     value = aws_s3_bucket_website_configuration.bucket_website_configuration.website_endpoint
 }
 
-# TODO: output "cloudfront_domain_name" (Tier 3)
+# output "cloudfront_domain_name" (Tier 3)
 #   value = the aws_cloudfront_distribution domain_name
+output "cloudfront_domain_name" {
+    value = aws_cloudfront_distribution.cdn.domain_name
+}

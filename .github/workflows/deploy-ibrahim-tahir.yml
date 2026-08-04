@@ -44,3 +44,9 @@ jobs:
       - name: Deploy frontend to s3
         working-directory: workshops/fullstack-aws/projects/02-notice-board/IbrahimTahir/frontend
         run: aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }}/ --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
+            --paths "/*"
